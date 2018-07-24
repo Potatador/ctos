@@ -1,0 +1,387 @@
+/******************************************************
+ *
+ *			CSS geral
+ *
+ *******************************************************/
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black');
+
+html, body {
+	margin: 0px 0px;
+	padding: 0px 0px;
+	background-color: #eaeaea;
+
+	font-family: "Open Sans", sans-serif;
+	font-size: 14px;
+}
+
+.align-center {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+.full-view {
+	height: 100vh;
+	width: 100vw;
+}
+
+.is-vis {
+	display: block;
+}
+
+.not-vis {
+	display: none;
+}
+
+
+/******************************************************
+ *
+ *			CSS da planta
+ *
+ *******************************************************/
+
+#planta svg {
+	width: 100%;
+	height: 100%;
+}
+
+/******************************************************
+ *
+ *			CSS da tabela do histórico
+ *
+ *******************************************************/
+
+.tabela-historico {
+	width: 70%;
+	height: 50%;
+}
+
+.linha {
+	display: flex;
+	flex-direction: row;
+	padding: 10px 30px;
+	color: white;
+}
+
+.linha .coluna:nth-child(1) {
+	width: 50%;
+}
+
+.linha .coluna:nth-child(2), .linha .coluna:nth-child(3) {
+	width: 25%;
+}
+
+.linha:nth-child(1) .coluna {
+	font-weight: bold;
+}
+
+.linha:nth-child(1) {
+	background-color: #222831!important;
+}
+
+.linha:nth-child(n) {
+	background-color: #393e46;
+}
+
+.linha:nth-child(2n) {
+	background-color: #00adb5;
+}
+
+
+/******************************************************
+ * 
+ *			CSS Menu opcoes
+ *
+ *******************************************************/
+
+ .menu-opcoes {
+	position: absolute;
+	margin-top: -70vh;
+	/* Posição final - 65vw */
+	margin-left: 70vw; 
+	visibility: hidden;
+	opacity: 0;
+	transition: all .4s ease-out;
+}
+
+.menu-opcoes > .opcao {
+	font-family: "Archivo Black", sans-serif;
+	text-transform: uppercase;
+	font-size: 1em;
+	transition: all .4s ease-out;
+}
+
+.menu-opcoes > .opcao:hover {
+	color: #707070;
+	cursor: pointer;
+	font-size: 1.1em;
+}
+
+.menu-opcoes > .opcao:active {
+	cursor: context-menu;
+}
+
+/******************************************************
+ * 
+ *			CSS do efeito de perspectiva
+ *
+ *******************************************************/
+
+.content {
+	perspective: 100px;
+}
+
+.content > div:not(.menu-opcoes) {
+	outline: 20px solid #c0c0c0;
+	transition: all .4s ease-out;
+}
+
+.pag {
+	width: 100%;
+}
+
+.perspective-on {
+	transform: scale(0.3, 0.5) rotateY(1deg);
+	margin-left: -25%;
+}
+
+.perspective-on-menu {
+	visibility: visible;
+	opacity: 1;
+	margin-left: 65vw;
+	font-size: 40px;
+}
+
+/******************************************************
+ * 
+ *			CSS dos andares
+ *
+ *******************************************************/
+
+#planta > div > svg {
+	width: 400px;
+	height: auto;
+}
+
+.andar.ativo {
+	display: block;
+	visibility: visible;
+	opacity: 1;
+}
+
+.andar.hidden {
+	display: none;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.quartos > rect, .quartos > g > rect {
+	transition: fill .4s ease-out;
+}
+
+.quartos > rect:hover, .quartos > g > rect:hover {
+	cursor: pointer;
+}
+
+.quartos > rect:active, .quartos > g > rect:active{
+	cursor: context-menu;
+}
+
+.quartos > rect.luz-acesa, .quartos > g.luz-acesa > rect {
+	fill: #f9f98c;
+}
+
+.portas > rect {
+	fill: #999;
+}
+
+.dobradura-porta > path {
+	fill: transparent;
+}
+
+.dobradura-porta > .aberto {
+	stroke: red;
+}
+
+.portas > rect.aberto, .dobradura-porta > .aberto {
+	fill: red;
+}
+
+.portas > rect, .dobradura-porta > path {
+	transition: fill .4s ease-out, stroke .4s ease-out;
+}
+
+.portas > rect:hover, .dobradura-porta > path:hover {
+	cursor: pointer;
+}
+
+.portas > rect:active, .dobradura-porta > path:active {
+	cursor: context-menu;
+}
+
+/******************************************************
+ * 
+ *			CSS da scroll bar dos andares
+ *
+ *******************************************************/
+
+#scroll-bar {
+	position: absolute;
+	width: 5px;
+	height: 80%;
+	background-color: red;
+	margin-left: -90%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	border-radius: 2.5px;
+}
+
+#scroll-bar > div {
+	margin-left: 15px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;    
+}
+
+#scroll-bar > div:before {
+	content: ' ';
+	position: absolute;
+	width: 5px;
+	height: 20px;
+	right: 0px;
+	background-color: white;
+}
+
+#scroll-bar >div.ativo:before {
+	background-color: blue;
+}
+
+#scroll-bar > div:hover {
+	cursor: pointer;
+}
+
+#scroll-bar > div:active {
+	cursor: context-menu;
+}
+
+/******************************************************
+ *
+ *			Configurações
+ *
+ *******************************************************/
+
+ #configuracoes > .opcoes {
+ 	max-height: 400px;
+ 	width: 700px;	
+ }
+
+ #configuracoes > .opcoes > .opcao {
+ 	height: 40px;
+ 	font-size: 20px;
+ 	display: flex;
+ 	flex-direction: row;
+ 	justify-content: space-around;
+ 	padding: 5px 0;
+ 	line-height: 40px;
+ 	color: white;
+ 	font-weight: 900;
+ }
+
+#configuracoes > .opcoes > .opcao:nth-child(n) {
+ 	background-color: #00adb5;
+}
+
+#configuracoes > .opcoes > .opcao:nth-child(2n) {
+	background-color: #393e46;
+}
+
+#configuracoes > .opcoes > .opcao > label {
+ 	background-color: #6c6d6e;
+ 	width: 70px;
+ 	height: 40px;
+ 	border-radius: 30px;
+ 	position: relative;
+
+	transition: background-color .3s ease-out;
+} 
+
+#configuracoes > .opcoes > .opcao > span {
+	width: 203px;
+} 
+
+#configuracoes > .opcoes > .opcao > label:hover {
+	cursor: pointer;
+} 
+
+#configuracoes > .opcoes > .opcao > label:active {
+	cursor: context-menu;
+} 
+
+#configuracoes > .opcoes > .opcao > label:before {
+	content: ' ';
+	height: 30px;
+	width: 30px;
+	background-color: white;
+	position: absolute;
+	margin-top: 5px;
+	border-radius: 100%;
+	left: 5px;
+
+	transition: left .3s ease-out;
+} 
+
+#configuracoes > .opcoes > .opcao > label.active {
+ 	background-color: #4cd964;
+}
+
+#configuracoes > .opcoes > .opcao > label.active:before {
+	left: calc(100% - 35px);
+}
+
+label > input[type='checkbox'] {
+	display: none;
+}
+
+.smoothTransitionText {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: #eaeaea;
+	z-index: 9999;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.smoothTransitionText > h1 {
+	font-size: 3.5em;
+	
+}
+
+.is-vis:not(.perspective-on) > div > .smoothTransitionText {
+	animation: mySmooth 2s ease-out;
+	animation-fill-mode: forwards;
+	animation-delay: 1s;
+}
+
+.is-vis:not(.perspective-on) > div > .smoothTransitionText > h1 {
+	animation: mySmooth 2s ease-out;
+	animation-fill-mode: forwards;
+}
+
+@keyframes mySmooth {
+	from {
+		opacity: 1;
+		visibility: visible;
+	}
+	to {
+		opacity: 0;
+		visibility: hidden;
+	}
+}
